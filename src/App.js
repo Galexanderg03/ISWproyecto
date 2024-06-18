@@ -5,10 +5,12 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import About from './components/About';
 import Login from './components/Login';
-import Register from './components/Register';
+// import Register from './components/Register';
 import AdminDashboard from './components/AdminDashboard';
 import CustomerAppointments from './components/CustomerAppointments';
 import './styles/App.css';
+import Footer from './components/Footer';
+import MisBicis from './components/MisBicis';
 
 const adminUser = {
   name: 'Admin',
@@ -114,7 +116,7 @@ function App() {
         </Link>
         <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <Link to="/about" onClick={() => setMenuOpen(false)}>Quienes Somos</Link>
-          <Link to="/certifications" onClick={() => setMenuOpen(false)}>Certificaciones</Link>
+          <Link to="/misBicis" onClick={() => setMenuOpen(false)}>Mis Bicicletas</Link>
           <Link to="/contacts" onClick={() => setMenuOpen(false)}>Contactos</Link>
           <Link to="/stores" onClick={() => setMenuOpen(false)}>Tiendas</Link>
           <Link to="/equipment" onClick={() => setMenuOpen(false)}>Equipamiento</Link>
@@ -146,11 +148,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/misBicis" element={<MisBicis />} />
         <Route path="/admin" element={isLoggedIn && currentUser.role === 'admin' ? <AdminDashboard /> : <Home />} />
         <Route path="/customer-appointments" element={isLoggedIn && currentUser.role === 'customer' ? <CustomerAppointments /> : <Home />} />
         {/* Otras rutas aquí */}
       </Routes>
+      <Footer/>
     </div>
   );
 }
